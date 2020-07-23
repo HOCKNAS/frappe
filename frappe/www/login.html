@@ -1,110 +1,179 @@
 {% extends "templates/web.html" %}
 
-{% block style %}
-<style>
-	{% include "templates/includes/login/login.css" %}
-</style>
-{% endblock %}
+<!-- Apunta a la ruta donde estan los estilos de tailwindcss -->
+{%- block head -%}
+<link type="text/css" rel="stylesheet" href="/assets/css/tailwind.min.css">
+{%- endblock -%}
 
+<!-- Inicializa sin contenido el bloque de style -->
+{% block style %}{% endblock %}
+
+<!-- Inicializa sin contenido el bloque de navbar -->
+{%- block navbar -%}{%- endblock -%}
+
+<!-- Modifica el contenido del page_container -->
+{% block page_container %}
+
+<!-- Modifica el contenido del page_content -->
 {% block page_content %}
 <!-- {{ for_test }} -->
-<div style='min-height: 360px'>
+
+
+
+<div class="flex h-screen w-screen"
+	style=" background-image: url('assets/frappe/images/noa/fondo_1920.png'); background-position: center center; background-attachment: scroll ; background-repeat: no-repeat; background-size: cover">
+
 	<noscript>
 		<div class="text-center my-5">
 			<h4>{{ _("Javascript is disabled on your browser") }}</h4>
-			<p class="text-muted">{{ _("You need to enable JavaScript for your app to work.") }}<br>{{ _("To enable it follow the instructions in the following link: {0}").format("<a href='https://enable-javascript.com/'>enable-javascript.com</a></p>") }}
+			<p class="text-muted">
+				{{ _("You need to enable JavaScript for your app to work.") }}<br>{{ _("To enable it follow the instructions in the following link: {0}").format("<a href='https://enable-javascript.com/'>enable-javascript.com</a></p>") }}
 		</div>
 	</noscript>
-<section class='for-login'>
-	<div class="login-content page-card" style="margin-top: 30px;">
-		<form class="form-signin form-login" role="form">
-			<div class="page-card-head">
-				<span class="indicator blue" data-text="{{ _('Login') }}"></span>
+
+	<div class="parte-izquierda w-1/5"></div>
+
+	<div class="parte-centro w-3/5 flex flex-col justify-center items-stretch">
+
+		<div class="parte-centro-1 w-full h-full flex justify-center items-center">
+			<div class=" w-32 h-32">
+				<img src="assets/frappe/images/noa/logo.png" alt="logo" class=" w-full h-full ">
 			</div>
-
-			<input type="text" id="login_email"
-				class="form-control"
-				placeholder="{% if login_name_placeholder %}{{ login_name_placeholder  }}{% else %}{{ _('Email Address') }}{% endif %}"
-				required autofocus>
-
-			<div class="password-field" style="position: relative;">
-				<input type="password" id="login_password"
-						class="form-control" placeholder="{{ _('Password') }}" required>
-
-				<span toggle="#login_password" class="fa fa-fw fa-eye toggle-password text-muted"></span>
-			</div>
-
-			<button class="btn btn-sm btn-primary btn-block btn-login" type="submit">
-				{{ _("Login") }}</button>
-
-			{% if ldap_settings and ldap_settings.enabled %}
-			<button class="btn btn-sm btn-default btn-block btn-login btn-ldap-login">
-				{{ _("Login with LDAP") }}</button>
-			{% endif %}
-		</form>
-	</div>
-	<div class='form-footer'>
-
-			<div class='social-logins'>
-			{%- if social_login -%}
-				<h6>{{ _("Or login with") }}</h6>
-
-				<p class="text-center" style="margin-top: 15px">
-				{% for provider in provider_logins %}
-					<a href="{{ provider.auth_url }}"
-						class="btn btn-default btn-sm btn-social btn-{{ provider.name }}">
-							{{ provider.icon }} {{ provider.provider_name }}</a>
-				{% endfor %}
-				</p>
-			{%- endif -%}
-			</div>
-
-	{%- if not disable_signup -%}
-		<p class="text-center sign-up-message">
-			<a href="#signup" style="margin-top: -2px;">{{ _("Don't have an account? Sign up") }}</a>
-		</p>
-	{%- endif -%}
-	<p class="text-center forgot-password-message">
-		<a href="#forgot">{{ _("Forgot Password?") }}</a></p>
-	</div>
-</section>
-<section class='for-signup'>
-	<div class="login-content page-card" style="margin-top: 20px;">
-	<form class="form-signin form-signup hide" role="form">
-		<div class="page-card-head">
-			<span class="indicator blue" data-text="{{ _('Sign Up') }}"></span>
 		</div>
-		<input type="text" id="signup_fullname"
-			class="form-control" placeholder="{{ _('Full Name') }}" required autofocus>
-		<input type="email" id="signup_email"
-			class="form-control" placeholder="{{ _('Email Address') }}" required>
-		<button class="btn btn-sm btn-primary btn-block btn-signup" type="submit">{{ _("Sign up") }}</button>
-	</form>
-	</div>
-	<div class='form-footer'>
-		<a href="#login" class="blue">{{ _("Have an account? Login") }}</a>
-	</div>
-</section>
 
-<section class='for-forgot'>
-	<div class="login-content page-card" style="margin-top: 20px;">
-	<form class="form-signin form-forgot hide" role="form">
-		<div class="page-card-head">
-			<span class="indicator blue" data-text="{{ _('Forgot Password') }}"></span></div>
-		<input type="email" id="forgot_email"
-			class="form-control" placeholder="{{ _('Email Address') }}" required autofocus>
-		<button class="btn btn-sm btn-primary btn-block btn-forgot" type="submit">{{ _("Reset Password") }}</button>
-	</form>
+		<div class="parte-centro-2 w-full h-full  flex sm:flex-col-reverse md:flex-col-reverse lg:flex-row xl:flex-row">
+			<div class="parte-centro-2-derecha w-1/4 h-full"></div>
+			<div class="parte-centro-2-centro w-2/4 h-full flex justify-center items-center">
+
+				<!-- FORMULARIO LOGIN -->
+				<section class='for-login flex w-full h-full flex-col justify-between items-center'>
+					<div class="login-content page-card h-full w-full">
+
+						<div class="page-card-head flex justify-center items-center">
+							<span class="indicator blue" data-text="{{ _('Login') }}"></span>
+						</div>
+
+						<form
+							class="form-signin form-login flex flex-col h-48 mt-6  bg-white rounded-lg shadow-lg items-center justify-around"
+							role="form">
+							<input type="text" id="login_email" class="form-control w-10/12 px-4 h-12"
+								placeholder="{% if login_name_placeholder %}{{ login_name_placeholder  }}{% else %}{{ _('Email Address') }}{% endif %}"
+								required autofocus>
+
+							<div class="password-field w-10/12" style="position: relative;">
+								<input type="password" id="login_password" class="form-control w-full px-4 h-12"
+									placeholder="{{ _('Password') }}" required>
+
+								<span toggle="#login_password"
+									class="fa fa-fw fa-eye toggle-password text-muted"></span>
+							</div>
+
+							<button class="btn btn-sm btn-primary btn-block btn-login" type="submit">
+								{{ _("Login") }}</button>
+
+							{% if ldap_settings and ldap_settings.enabled %}
+							<button class="btn btn-sm btn-default btn-block btn-login btn-ldap-login">
+								{{ _("Login with LDAP") }}</button>
+							{% endif %}
+						</form>
+					</div>
+					<div class='form-footer'>
+
+						<div class='social-logins'>
+							{%- if social_login -%}
+							<h6>{{ _("Or login with") }}</h6>
+
+							<p class="text-center" style="margin-top: 15px">
+								{% for provider in provider_logins %}
+								<a href="{{ provider.auth_url }}"
+									class="btn btn-default btn-sm btn-social btn-{{ provider.name }}">
+									{{ provider.icon }} {{ provider.provider_name }}</a>
+								{% endfor %}
+							</p>
+							{%- endif -%}
+						</div>
+
+						{%- if not disable_signup -%}
+						<p class="text-center sign-up-message">
+							<a href="#signup" style="margin-top: -2px;">{{ _("Don't have an account? Sign up") }}</a>
+						</p>
+						{%- endif -%}
+						<p class="text-center forgot-password-message">
+							<a href="#forgot">{{ _("Forgot Password?") }}</a></p>
+					</div>
+				</section>
+
+				<!-- FORMULARIO SIGN UP -->
+				<section class='for-signup flex rounded w-full h-full flex-col justify-between items-center'>
+					<div class="login-content page-card h-full w-full">
+
+						<div class="page-card-head flex justify-center items-center">
+							<span class="indicator blue" data-text="{{ _('Sign Up') }}"></span>
+						</div>
+
+						<form
+							class="form-signin form-signup hide flex flex-col h-48 mt-6  bg-white rounded-lg shadow-lg  items-center justify-around"
+							role="form">
+							<input type="text" id="signup_fullname" class="form-control w-10/12 px-4"
+								placeholder="{{ _('Full Name') }}" required autofocus>
+							<input type="email" id="signup_email" class="form-control w-10/12 px-4"
+								placeholder="{{ _('Email Address') }}" required>
+							<button class="btn btn-sm btn-primary btn-block btn-signup"
+								type="submit">{{ _("Sign up") }}</button>
+						</form>
+					</div>
+					<div class='form-footer'>
+						<a href="#login" class="blue">{{ _("Have an account? Login") }}</a>
+					</div>
+				</section>
+
+				<!-- FORMULARIO FORGOT PASSWORD -->
+				<section class='for-forgot flex rounded w-full h-full flex-col justify-between items-center'>
+					<div class="login-content page-card h-full w-full">
+						<div class="page-card-head flex justify-center items-center">
+							<span class="indicator blue" data-text="{{ _('Forgot Password') }}"></span></div>
+						<form
+							class="form-signin form-forgot flex flex-col h-48 mt-6  bg-white rounded-lg shadow-lg items-center hide  justify-around"
+							role="form">
+							<input type="email" id="forgot_email" class="form-control w-10/12 px-4 h-16"
+								placeholder="{{ _('Email Address') }}" required autofocus>
+							<button class="btn btn-sm btn-primary btn-block btn-forgot"
+								type="submit">{{ _("Reset Password") }}</button>
+						</form>
+					</div>
+					<div class='form-footer'>
+						<a href="#login">{{ _("Back to Login") }}</a>
+					</div>
+				</section>
+
+
+			</div>
+			<div class="parte-centro-2-izquierda  w-1/4 h-full flex flex-col justify-center items-start">
+				<div class="texto-1 h-auto w-auto">
+					<p>Texto</p>
+				</div>
+				<div class="texto-2 h-auto w-auto">
+					<p>Texto</p>
+				</div>
+				<div class="texto-3 h-auto w-auto">
+					<p>Texto</p>
+				</div>
+			</div>
+		</div>
+		<div class="parte-centro-3 w-full h-full"></div>
 	</div>
-	<div class='form-footer'>
-		<a href="#login">{{ _("Back to Login") }}</a>
-	</div>
-</section>
+	<div class="parte-derecha w-1/5"></div>
 </div>
 {% endblock %}
 
+{%- endblock -%}
+
 {% block script %}
-	<script>{% include "templates/includes/login/login.js" %}</script>
+<script>{% include "templates/includes/login/login.js" %}</script>
 {% endblock %}
 
+<!-- Inicializa sin contenido el bloque de sidebar -->
 {% block sidebar %}{% endblock %}
+
+<!-- Inicializa sin contenido el bloque de footer -->
+{%- block footer -%}{%- endblock -%}
