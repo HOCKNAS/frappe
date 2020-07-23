@@ -5,7 +5,8 @@
     "production": "FRAPPE_ENV=production node rollup/build.js",
     "watch": "node rollup/watch.js",
     "cypress:run": "cypress run --record --key 4a48f41c-11b3-425b-aa88-c58048fa69eb",
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "tailwindcss": "npx tailwindcss build frappe/public/tailwindcss/tailwind.css -o frappe/public/tailwindcss/styles.css -c frappe/public/tailwindcss/tailwind.config.js"
   },
   "repository": {
     "type": "git",
@@ -40,6 +41,7 @@
     "showdown": "^1.9.1",
     "socket.io": "^2.0.4",
     "superagent": "^3.8.2",
+    "tailwindcss": "^1.5.2",
     "touch": "^3.1.0",
     "vue": "^2.6.8",
     "vue-router": "^2.0.0"
