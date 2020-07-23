@@ -1,4 +1,7 @@
 {
+	"css/tailwind.min.css": [
+		"public/tailwindcss/styles.css"
+	],
 	"css/frappe-web-b4.css": [
 		"public/scss/website.scss",
 		"public/less/indicator.less"
