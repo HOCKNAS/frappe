@@ -6,7 +6,13 @@
 {%- endblock -%}
 
 <!-- Inicializa sin contenido el bloque de style -->
-{% block style %}{% endblock %}
+{% block style %}
+<style>
+	{% include "templates/includes/login/fonts.css" %}
+</style>
+{% endblock %}
+
+
 
 <!-- Inicializa sin contenido el bloque de navbar -->
 {%- block navbar -%}{%- endblock -%}
@@ -20,70 +26,77 @@
 
 
 
-<div class="flex h-screen w-screen"
+<div class="flex h-screen w-screen "
 	style=" background-image: url('assets/frappe/images/noa/fondo_1920.png'); background-position: center center; background-attachment: scroll ; background-repeat: no-repeat; background-size: cover">
 
 	<noscript>
 		<div class="text-center my-5">
 			<h4>{{ _("Javascript is disabled on your browser") }}</h4>
-			<p class="text-muted">
+			<p class="text-muted ">
 				{{ _("You need to enable JavaScript for your app to work.") }}<br>{{ _("To enable it follow the instructions in the following link: {0}").format("<a href='https://enable-javascript.com/'>enable-javascript.com</a></p>") }}
 		</div>
 	</noscript>
 
-	<div class="parte-izquierda w-1/5"></div>
+	<div class="parte-izquierda w-2/12 sm:w-2/12 md:w-2/12 lg:w-8/12 xl:10/12"></div>
 
-	<div class="parte-centro w-3/5 flex flex-col justify-center items-stretch">
+	<div class="parte-centro   w-full grid grid-cols-1 gap-4  sm:w-8/12 sm:grid sm:grid-cols-1 sm:gap-4    md:w-8/12 md:grid md:grid-cols-1 md:gap-4     lg:w-full lg:grid lg:grid-cols-1 lg:gap-4       xl:w-full xl:grid xl:grid-cols-1 xl:gap-4">
 
-		<div class="parte-centro-1 w-full h-full flex justify-center items-center">
-			<div class=" w-32 h-32">
-				<img src="assets/frappe/images/noa/logo.png" alt="logo" class=" w-full h-full ">
+		<div class="parte-centro-1 w-full h-1/4 grid grid-cols-1 sm:grid sm:grid-cols-1 md:grid md:grid-cols-1  lg:grid lg:grid-cols-12 xl:grid xl:grid-cols-12 ">
+			<div class="imagen w-full h-full flex justify-center items-center sm:w-full sm:h-full sm:flex sm:justify-center sm:items-center     md:w-full md:h-full md:flex md:justify-center md:items-center        lg:w-full lg:h-full lg:flex lg:justify-center lg:items-center lg:col-span-8    xl:w-full xl:h-full xl:flex xl:justify-center xl:items-center xl:col-span-9">
+				<img src="assets/frappe/images/noa/logo.png" alt="logo" class=" w-32 h-32 sm:w-32 sm:h-32     md:w-32 md:h-32  lg:h-32 lg:w-32    xl:h-32 xl:w-32 ">
 			</div>
 		</div>
 
-		<div class="parte-centro-2 w-full h-full  flex sm:flex-col-reverse md:flex-col-reverse lg:flex-row xl:flex-row">
-			<div class="parte-centro-2-derecha w-1/4 h-full"></div>
-			<div class="parte-centro-2-centro w-2/4 h-full flex justify-center items-center">
+		<div class="parte-centro-2 w-full h-3/4  flex flex-col-reverse sm:flex-col-reverse md:flex-col-reverse lg:flex-row xl:flex-row ">
+			<div class="parte-centro-2-derecha w-0 h-full"></div>
+			<div class="parte-centro-2-centro w-full h-full flex justify-center items-center">
 
 				<!-- FORMULARIO LOGIN -->
 				<section class='for-login flex w-full h-full flex-col justify-between items-center'>
 					<div class="login-content page-card h-full w-full">
 
-						<div class="page-card-head flex justify-center items-center">
+						<div class="page-card-head flex justify-center items-center font-semibold text-xl sm:text-xl text-indigo-900">
 							<span class="indicator blue" data-text="{{ _('Login') }}"></span>
 						</div>
 
 						<form
-							class="form-signin form-login flex flex-col h-48 mt-6  bg-white rounded-lg shadow-lg items-center justify-around"
+							class="form-signin form-login flex flex-col h-64 mt-6  items-center justify-around"
 							role="form">
-							<input type="text" id="login_email" class="form-control w-10/12 px-4 h-12"
+
+							<div class="flex flex-col h-full w-full bg-white rounded-lg shadow-lg mb-6 items-center justify-around divide-y">
+							<input type="text" id="login_email" class="form-control w-10/12 px-4  h-12"
 								placeholder="{% if login_name_placeholder %}{{ login_name_placeholder  }}{% else %}{{ _('Email Address') }}{% endif %}"
 								required autofocus>
 
-							<div class="password-field w-10/12" style="position: relative;">
-								<input type="password" id="login_password" class="form-control w-full px-4 h-12"
+							<div class="password-field w-10/12 flex justify-between items-center " style="position: relative;">
+								<input type="password" id="login_password" class="form-control w-11/12 pl-4 h-12 mt-6"
 									placeholder="{{ _('Password') }}" required>
 
 								<span toggle="#login_password"
-									class="fa fa-fw fa-eye toggle-password text-muted"></span>
+									class="fa fa-fw fa-eye toggle-password text-muted  w-1/12 h-6 self-center" style="color: grey;" ></span>
+							</div>
 							</div>
 
-							<button class="btn btn-sm btn-primary btn-block btn-login" type="submit">
-								{{ _("Login") }}</button>
+						<button class="btn btn-sm btn-primary btn-block btn-login bg-indigo-900 hover:bg-indigo-700 text-white font-bold py-4  px-6  mb-8  rounded-full" type="submit">
+							{{ _("Login") }}</button>
 
-							{% if ldap_settings and ldap_settings.enabled %}
-							<button class="btn btn-sm btn-default btn-block btn-login btn-ldap-login">
-								{{ _("Login with LDAP") }}</button>
-							{% endif %}
+						{% if ldap_settings and ldap_settings.enabled %}
+						<button class="btn btn-sm btn-default btn-block btn-login btn-ldap-login bg-indigo-900 hover:bg-indigo-700 text-white font-bold py-4  px-6  mb-8  rounded-full">
+							{{ _("Login with LDAP") }}</button>
+						{% endif %}
+
 						</form>
+
+						
+
 					</div>
-					<div class='form-footer'>
+					<div class='form-footer '>
 
 						<div class='social-logins'>
 							{%- if social_login -%}
 							<h6>{{ _("Or login with") }}</h6>
 
-							<p class="text-center" style="margin-top: 15px">
+							<p class="text-center " style="margin-top: 15px">
 								{% for provider in provider_logins %}
 								<a href="{{ provider.auth_url }}"
 									class="btn btn-default btn-sm btn-social btn-{{ provider.name }}">
@@ -94,11 +107,11 @@
 						</div>
 
 						{%- if not disable_signup -%}
-						<p class="text-center sign-up-message">
+						<p class="text-center  sign-up-message font-semibold text-xl sm:text-xl text-indigo-900" >
 							<a href="#signup" style="margin-top: -2px;">{{ _("Don't have an account? Sign up") }}</a>
 						</p>
 						{%- endif -%}
-						<p class="text-center forgot-password-message">
+						<p class="text-center  forgot-password-message text-xl sm:text-xl text-indigo-900" >
 							<a href="#forgot">{{ _("Forgot Password?") }}</a></p>
 					</div>
 				</section>
@@ -107,62 +120,71 @@
 				<section class='for-signup flex rounded w-full h-full flex-col justify-between items-center'>
 					<div class="login-content page-card h-full w-full">
 
-						<div class="page-card-head flex justify-center items-center">
+						<div class="page-card-head flex justify-center items-center font-semibold text-xl sm:text-xl text-indigo-900">
 							<span class="indicator blue" data-text="{{ _('Sign Up') }}"></span>
 						</div>
 
 						<form
-							class="form-signin form-signup hide flex flex-col h-48 mt-6  bg-white rounded-lg shadow-lg  items-center justify-around"
+							class="form-signin form-signup hide flex flex-col h-64 mt-6  items-center justify-around"
 							role="form">
-							<input type="text" id="signup_fullname" class="form-control w-10/12 px-4"
+
+							<div class="flex flex-col h-full w-full bg-white rounded-lg shadow-lg mb-6 items-center justify-evenly divide-y">
+							<input type="text" id="signup_fullname" class="form-control w-10/12 px-4  h-12 -mb-4 "
 								placeholder="{{ _('Full Name') }}" required autofocus>
-							<input type="email" id="signup_email" class="form-control w-10/12 px-4"
+							<input type="email" id="signup_email" class="form-control w-10/12 px-4  h-12  "
 								placeholder="{{ _('Email Address') }}" required>
-							<button class="btn btn-sm btn-primary btn-block btn-signup"
+							
+							</div>
+
+							<button class="btn btn-sm btn-primary btn-block btn-signup bg-indigo-900 hover:bg-indigo-700 text-white font-bold py-4  px-6  mb-8 rounded-full"
 								type="submit">{{ _("Sign up") }}</button>
 						</form>
 					</div>
-					<div class='form-footer'>
-						<a href="#login" class="blue">{{ _("Have an account? Login") }}</a>
+					<div class='form-footer font-semibold text-xl sm:text-xl text-indigo-900'>
+						<a href="#login" class="blue ">{{ _("Have an account? Login") }}</a>
 					</div>
 				</section>
 
 				<!-- FORMULARIO FORGOT PASSWORD -->
 				<section class='for-forgot flex rounded w-full h-full flex-col justify-between items-center'>
 					<div class="login-content page-card h-full w-full">
-						<div class="page-card-head flex justify-center items-center">
+						<div class="page-card-head flex justify-center items-center font-semibold text-xl sm:text-xl text-indigo-900">
 							<span class="indicator blue" data-text="{{ _('Forgot Password') }}"></span></div>
 						<form
-							class="form-signin form-forgot flex flex-col h-48 mt-6  bg-white rounded-lg shadow-lg items-center hide  justify-around"
+							class="form-signin form-forgot hide flex flex-col h-64 mt-6  items-center justify-around"
 							role="form">
-							<input type="email" id="forgot_email" class="form-control w-10/12 px-4 h-16"
+							<div class="flex flex-col h-full w-full bg-white rounded-lg shadow-lg mb-6 items-center justify-around divide-y">
+							<input type="email" id="forgot_email" class="form-control w-10/12 px-4 h-16 "
 								placeholder="{{ _('Email Address') }}" required autofocus>
-							<button class="btn btn-sm btn-primary btn-block btn-forgot"
+
+							</div>
+							<button class="btn btn-sm btn-primary btn-block btn-forgot bg-indigo-900 hover:bg-indigo-700 text-white font-bold py-4  px-6  mb-8  rounded-full"
 								type="submit">{{ _("Reset Password") }}</button>
 						</form>
+						
 					</div>
-					<div class='form-footer'>
+					<div class='form-footer font-semibold text-xl sm:text-xl text-indigo-900'>
 						<a href="#login">{{ _("Back to Login") }}</a>
 					</div>
 				</section>
 
 
 			</div>
-			<div class="parte-centro-2-izquierda  w-1/4 h-full flex flex-col justify-center items-start">
-				<div class="texto-1 h-auto w-auto">
-					<p>Texto</p>
+			<div class="parte-centro-2-izquierda  h-full  w-full grid grid-cols-6 grid-rows-2 grid-flow-row gap-2         sm:h-full  sm:w-full sm:grid sm:grid-cols-6 sm:grid-rows-2 sm:grid-flow-row sm:gap-2     md:h-full  md:w-full md:grid md:grid-cols-6 md:grid-rows-2 md:grid-flow-row md:gap-2        lg:h-full  lg:w-6/12 lg:8rid lg:grid-cols-1 lg:grid-rows-6 lg:grid-flow-row lg:gap-0  lg:ml-4     xl:h-full  xl:w-4/12 xl:grid xl:grid-cols-1 xl:grid-rows-6 xl:ml-4">
+				<div class="texto-1   h-auto w-auto text-5xl col-start-2 col-span-2 flex justify-end items-center -mb-6 text-indigo-900      sm:h-auto sm:w-auto sm:text-5xl sm:col-start-2 sm:col-span-2 sm:flex sm:justify-end sm:items-center sm:-mb-6 sm:text-indigo-900     md:h-auto md:w-auto md:text-5xl md:col-start-2 md:col-span-2 md:flex md:justify-end md:items-center md:-mb-6 md:text-indigo-900     lg:col-start-1 lg:flex lg:justify-start lg:items-end lg:text-5xl lg:font-bold    xl:col-start-1 xl:flex xl:justify-start xl:items-end xl:text-5xl xl:font-bold ">
+					<p>Help</p>
 				</div>
-				<div class="texto-2 h-auto w-auto">
-					<p>Texto</p>
+				<div class="texto-2   h-auto w-auto text-5xl col-start-4 col-span-2 flex justify-start items-center -mb-6 text-indigo-900     sm:h-auto sm:w-auto sm:text-5xl sm:col-start-4 sm:col-span-2 sm:flex sm:justify-start sm:items-center sm:-mb-6 sm:text-indigo-900    md:h-auto md:w-auto md:text-5xl md:col-start-4 md:col-span-2 md:flex md:justify-start md:items-center md:-mb-6 md:text-indigo-900   lg:col-start-1  lg:flex lg:justify-start lg:items-center lg:text-6xl lg:font-extrabold    xl:col-start-1  xl:flex xl:justify-start xl:items-center xl:text-6xl xl:font-extrabold  ">
+					<p>Desk</p>
 				</div>
-				<div class="texto-3 h-auto w-auto">
-					<p>Texto</p>
+				<div class="texto-3   h-auto w-auto text-2xl col-start-3 col-span-2 flex justify-around items-center text-indigo-900       sm:h-auto sm:w-auto sm:text-2xl sm:col-start-3 sm:col-span-2 sm:flex sm:justify-around sm:items-center sm:text-indigo-900     md:h-auto md:w-auto md:text-2xl md:col-start-3 md:col-span-2 md:flex md:justify-around md:items-center md:text-indigo-900     lg:col-start-1 lg:flex lg:justify-start lg:items-start lg:text-4xl lg:font-semibold    xl:col-start-1 xl:flex xl:justify-start xl:items-start xl:text-4xl xl:font-semibold ">
+					<p>Experience</p>
 				</div>
 			</div>
 		</div>
-		<div class="parte-centro-3 w-full h-full"></div>
+		<div class="parte-centro-3 w-full h-1/4"></div>
 	</div>
-	<div class="parte-derecha w-1/5"></div>
+	<div class="parte-derecha w-2/12 sm:w-2/12 md:w-2/12 lg:w-6/12 xl:8/12"></div>
 </div>
 {% endblock %}
 
