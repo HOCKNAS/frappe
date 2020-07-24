@@ -12,6 +12,11 @@ module.exports = {
       xl: '1280px',
     },
     colors: {
+      
+      noaMorado1: '#262a71',
+      noaMorado2: '#1f1b3e',
+      noaGris1: '#9f9fa8',
+
       transparent: 'transparent',
       current: 'currentColor',
 
@@ -244,10 +249,21 @@ module.exports = {
         '"Apple Color Emoji"',
         '"Segoe UI Emoji"',
         '"Segoe UI Symbol"',
-        '"Noto Color Emoji"',
+        '"Noto Color Emoji"', 
       ],
       serif: ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
       mono: ['Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace'],
+      sfpro: [
+        'SF-Pro-Display-Bold',
+        'SF-Pro-Display-Medium',
+        'SF-Pro-Display-Regular',
+        'SF-Pro-Display-Thin',
+        'SF-Pro-Display-Ultralight',
+        'SF-Pro-Text-Bold',
+        'SF-Pro-Text-Light',
+        'SF-Pro-Text-Medium',
+        'SF-Pro-Text-Regular' 
+      ]
     },
     fontSize: {
       xs: '0.75rem',
