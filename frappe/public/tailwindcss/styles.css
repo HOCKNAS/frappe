@@ -590,6 +590,60 @@ video {
   height: auto;
 }
 
+@font-face {
+  font-family: 'SF-Pro-Display-Bold';
+
+  src: url("assets/frappe/tailwindcss/fonts/fonts/SF-Pro-Display-Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'SF-Pro-Display-Medium';
+
+  src: url("assets/frappe/tailwindcss/fonts/fonts/SF-Pro-Display-Medium.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'SF-Pro-Display-Regular';
+
+  src: url("assets/frappe/tailwindcss/fonts/fonts/SF-Pro-Display-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'SF-Pro-Display-Thin';
+
+  src: url("assets/frappe/tailwindcss/fonts/fonts/SF-Pro-Display-Thin.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'SF-Pro-Display-Ultralight';
+
+  src: url("assets/frappe/tailwindcss/fonts/fonts/SF-Pro-Display-Ultralight.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'SF-Pro-Text-Bold';
+
+  src: url("assets/frappe/tailwindcss/fonts/fonts/SF-Pro-Text-Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'SF-Pro-Text-Light';
+
+  src: url("assets/frappe/tailwindcss/fonts/fonts/SF-Pro-Text-Light.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'SF-Pro-Text-Medium';
+
+  src: url("assets/frappe/tailwindcss/fonts/fonts/SF-Pro-Text-Medium.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'SF-Pro-Text-Regular';
+
+  src: url("assets/frappe/tailwindcss/fonts/fonts/SF-Pro-Text-Regular.otf") format("opentype");
+}
+
 .container {
   width: 100%;
 }
@@ -616,60 +670,6 @@ video {
   .container {
     max-width: 1280px;
   }
-}
-
-@font-face {
-  font-family: 'SF-Pro-Display-Bold';
-
-  src: url("../frappe/tailwindcss/fonts/SF-Pro-Display-Bold.otf") format("opentype");
-}
-
-@font-face {
-  font-family: 'SF-Pro-Display-Medium';
-
-  src: url("../frappe/tailwindcss/fonts/SF-Pro-Display-Medium.otf") format("opentype");
-}
-
-@font-face {
-  font-family: 'SF-Pro-Display-Regular';
-
-  src: url("../frappe/tailwindcss/fonts/SF-Pro-Display-Regular.otf") format("opentype");
-}
-
-@font-face {
-  font-family: 'SF-Pro-Display-Thin';
-
-  src: url("../frappe/tailwindcss/fonts/SF-Pro-Display-Thin.otf") format("opentype");
-}
-
-@font-face {
-  font-family: 'SF-Pro-Display-Ultralight';
-
-  src: url("../frappe/tailwindcss/fonts/SF-Pro-Display-Ultralight.otf") format("opentype");
-}
-
-@font-face {
-  font-family: 'SF-Pro-Text-Bold';
-
-  src: url("../frappe/tailwindcss/fonts/SF-Pro-Text-Bold.otf") format("opentype");
-}
-
-@font-face {
-  font-family: 'SF-Pro-Text-Light';
-
-  src: url("../frappe/tailwindcss/fonts/SF-Pro-Text-Light.otf") format("opentype");
-}
-
-@font-face {
-  font-family: 'SF-Pro-Text-Medium';
-
-  src: url("../frappe/tailwindcss/fonts/SF-Pro-Text-Medium.otf") format("opentype");
-}
-
-@font-face {
-  font-family: 'SF-Pro-Text-Regular';
-
-  src: url("../frappe/tailwindcss/fonts/SF-Pro-Text-Regular.otf") format("opentype");
 }
 
 .space-y-0 > :not(template) ~ :not(template) {
