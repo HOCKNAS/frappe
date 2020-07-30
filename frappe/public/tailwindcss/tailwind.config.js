@@ -253,17 +253,15 @@ module.exports = {
       ],
       serif: ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
       mono: ['Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace'],
-      sfpro: [
-        'SF-Pro-Display-Bold',
-        'SF-Pro-Display-Medium',
-        'SF-Pro-Display-Regular',
-        'SF-Pro-Display-Thin',
-        'SF-Pro-Display-Ultralight',
-        'SF-Pro-Text-Bold',
-        'SF-Pro-Text-Light',
-        'SF-Pro-Text-Medium',
-        'SF-Pro-Text-Regular' 
-      ]
+      displaybold: ['SF-Pro-Display-Bold'],
+      displaymedium: ['SF-Pro-Display-Medium'],
+      displayregular: ['SF-Pro-Display-Regular'],
+      displaythin: ['SF-Pro-Display-Thin'],
+      displayultralight: ['SF-Pro-Display-Ultralight'],
+      textbold: ['SF-Pro-Text-Bold'], 
+      textlight: ['SF-Pro-Text-Light'], 
+      textmedium: ['SF-Pro-Text-Medium'], 
+      textregular: ['SF-Pro-Text-Regular']
     },
     fontSize: {
       xs: '0.75rem',
