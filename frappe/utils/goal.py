@@ -121,7 +121,7 @@ def get_monthly_goal_graph_data(title, doctype, docname, goal_value_field, goal_
 		summary_values += [
 			{
 				'title': _("Goal"),
-				'color': '#5e64ff',
+				'color': '#2a3088',
 				'value': formatted_goal
 			},
 			{

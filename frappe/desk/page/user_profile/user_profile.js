@@ -186,7 +186,7 @@ class UserProfile {
 					},
 					height: 160,
 					maxSlices: 8,
-					colors: ['#5e64ff', '#743ee2', '#ff5858', '#ffa00a', '#feef72', '#28a745', '#98d85b', '#a9a7ac'],
+					colors: ['#2a3088', '#743ee2', '#ff5858', '#ffa00a', '#feef72', '#28a745', '#98d85b', '#a9a7ac'],
 				});
 			} else {
 				this.wrapper.find('.percentage-chart-container').hide();
